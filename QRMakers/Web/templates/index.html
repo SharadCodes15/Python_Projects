@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QR Code Maker</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 450px;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            resize: vertical;
+            font-size: 16px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5568d8;
+        }
+
+        .qr {
+            margin-top: 30px;
+        }
+
+        .qr img {
+            width: 220px;
+            height: 220px;
+            border: 8px solid white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📱 QR Code Maker</h1>
+
+    <p>
+        Enter text or a URL to generate your QR code.
+    </p>
+
+    <form method="POST">
+
+        <textarea
+            name="data"
+            placeholder="Enter text or URL..."
+            required
+        ></textarea>
+
+        <button type="submit">
+            Generate QR Code
+        </button>
+
+    </form>
+
+    {% if qr_code %}
+
+    <div class="qr">
+
+        <h2>Your QR Code</h2>
+
+        <img
+            src="data:image/png;base64,{{ qr_code }}"
+            alt="Generated QR Code"
+        >
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
