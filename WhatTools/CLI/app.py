@@ -111,3 +111,62 @@ def show_menu():
     print("└" + "─" * width + "┘")
     print(RESET)
 
+# ---------------
+# Spam Messages
+# ---------------
+
+def spamMessageAfterScreen(message,num,interval):
+    title = "✔ Sending Message"
+
+    lines = [
+        f"Message: {message}",
+        f"Frequency: {num}",
+        f"Interval: {interval}",
+    ]
+
+    content_width = max(
+        len(title),
+        *(len(line) + 2 for line in lines)
+    ) + 2
+
+    print()
+    print(f"{GREEN}╔{'═' * content_width}╗")
+    print(f"║{title.center(content_width)}║")
+    print(f"╠{'═' * content_width}╣")
+
+    for line in lines:
+        print(f"║  {line:<{content_width - 2}}║")
+
+    print(f"╚{'═' * content_width}╝{RESET}")
+
+
+def spam():
+    print("Spam Messages")
+    message = input(
+        f"\n{YELLOW}➜ Enter Message : {RESET}"
+    ).strip()
+    if not message:
+        print(f"{RED}Error: Message cannot be empty.{RESET}")
+        pause()
+        return
+
+    try:
+        num = input(
+        f"\n{YELLOW}➜ Enter Frequency : (default 0) {RESET}"
+    ).strip()
+        time.sleep(0.5)
+        interval = input(
+                f"\n{YELLOW}➜ Enter Interval : (default 0.5s) {RESET}"
+            ).strip()
+        pyGUI = pyAuto();
+        time.sleep(0.5)
+        print(f"{GREEN}| Open Whatsapp and Press Input bar |{RESET}")
+        spamMessageAfterScreen(message,num,interval);
+        result = pyGUI.spamMessages(message=message,num=num,interval=interval);
+        if result != 1:
+            print(f"\n{RED}✘ Failed to Send Messages with Error \n {result}.{RESET}")
+    except Exception as e:
+            print(f"\n{RED}✘ Failed to Send Messages with Error \n {e}.{RESET}")
+
+    pause()
+
