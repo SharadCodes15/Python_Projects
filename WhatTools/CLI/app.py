@@ -111,6 +111,23 @@ def show_menu():
     print("└" + "─" * width + "┘")
     print(RESET)
 
+def thankyou():
+    title = "Thank you for using QR Generator!"
+    goodbye = "Goodbye 👋"
+
+    width = max(len(title), len(goodbye)) + 10
+
+    print(f"""
+{CYAN}╔{'═' * width}╗
+║{' ' * width}║
+║{BOLD}{WHITE}{title.center(width)}{RESET}{CYAN}║
+║{' ' * width}║
+║{goodbye.center(width)}║
+║{' ' * width}║
+╚{'═' * width}╝{RESET}
+""")
+
+
 # ---------------
 # Spam Messages
 # ---------------
@@ -151,13 +168,13 @@ def spam():
         return
 
     try:
-        num = input(
-        f"\n{YELLOW}➜ Enter Frequency : (default 0) {RESET}"
-    ).strip()
+        num = int(input(
+        f"\n{YELLOW}➜ Enter Frequency : (default 1) {RESET}"
+    ).strip() or "1")
         time.sleep(0.5)
-        interval = input(
+        interval = float(input(
                 f"\n{YELLOW}➜ Enter Interval : (default 0.5s) {RESET}"
-            ).strip()
+            ).strip() or "0.5")
         pyGUI = pyAuto();
         time.sleep(0.5)
         print(f"{GREEN}| Open Whatsapp and Press Input bar |{RESET}")
@@ -165,8 +182,53 @@ def spam():
         result = pyGUI.spamMessages(message=message,num=num,interval=interval);
         if result != 1:
             print(f"\n{RED}✘ Failed to Send Messages with Error \n {result}.{RESET}")
+        print(f"\n{GREEN}| ✔ Successfully Sent |{RESET}")
     except Exception as e:
             print(f"\n{RED}✘ Failed to Send Messages with Error \n {e}.{RESET}")
 
     pause()
 
+def main():
+    while True:
+        clear_screen()
+        show_header()
+        show_menu()
+
+        choice = input(
+            f"{YELLOW}➜ Select an option [1-4]: {RESET}"
+        ).strip()
+
+        if choice == "1":
+            clear_screen()
+            show_header()
+            spam()
+
+        elif choice == "2":
+            clear_screen()
+            show_header()
+            print("Comming Soon...")
+
+        elif choice == "3":
+            clear_screen()
+            show_header()
+            # about()
+            print("Comming Soon...")
+
+
+        elif choice == "4":
+            clear_screen()
+            thankyou()
+            sys.exit(0)
+
+        else:
+            print(f"\n{RED}✘ Invalid option. Please choose 1-4.{RESET}")
+            time.sleep(1)
+
+
+
+# ─────────────────────────────────────────────────────────────
+# Entry point
+# ─────────────────────────────────────────────────────────────
+
+if __name__ == "__main__":
+    main()

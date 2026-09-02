@@ -8,9 +8,11 @@ class pyAuto:
         self.pyGui = pag
     def spamMessages(self,message,num=1,interval=0.5):
         try:
-            self.pyGui.write(message);
-            self.pyGui.press("ENTER")
-            time.sleep(interval)    
+            time.sleep(3)
+            for i in range(int(num)):
+                self.pyGui.write(message);
+                self.pyGui.press("ENTER")
+                time.sleep(float(interval))    
             return 1
         except Exception as e:
             return e

@@ -247,15 +247,21 @@ def main():
         elif choice == "4":
             clear_screen()
 
+            title = "Thank you for using QR Generator!"
+            goodbye = "Goodbye 👋"
+
+            width = max(len(title), len(goodbye)) + 10
+
             print(f"""
-{CYAN}╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║              {BOLD}{WHITE}Thank you for using QR Generator!{RESET}{CYAN}               ║
-║                                                              ║
-║                          Goodbye 👋                          ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝{RESET}
+{CYAN}╔{'═' * width}╗
+║{' ' * width}║
+║{BOLD}{WHITE}{title.center(width)}{RESET}{CYAN}║
+║{' ' * width}║
+║{goodbye.center(width)}║
+║{' ' * width}║
+╚{'═' * width}╝{RESET}
 """)
+
 
             sys.exit(0)
 
