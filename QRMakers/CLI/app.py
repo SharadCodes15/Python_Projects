@@ -47,19 +47,45 @@ def print_box(title,width=62):
 # ---------------
 
 def show_header():
-    print(f"""{CYAN}╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║                 {BOLD}{WHITE}███████╗ █████╗ ███╗   ███╗{RESET}{CYAN}                  ║
-║                 {BOLD}{WHITE}██╔════╝██╔══██╗████╗ ████║{RESET}{CYAN}                  ║
-║                 {BOLD}{WHITE}███████╗███████║██╔████╔██║{RESET}{CYAN}                  ║
-║                 {BOLD}{WHITE}╚════██║██╔══██║██║╚██╔╝██║{RESET}{CYAN}                  ║
-║                 {BOLD}{WHITE}███████║██║  ██║██║ ╚═╝ ██║{RESET}{CYAN}                  ║
-║                 {BOLD}{WHITE}╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝{RESET}{CYAN}                  ║
-║                                                              ║
-║                            {BOLD}{WHITE}SAM QR{RESET}{CYAN}                            ║
-║                      {WHITE}QR CODE GENERATOR{RESET}{CYAN}                       ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝{RESET}""")
+    width = 62
+
+    lines = [
+        "███████╗ █████╗ ███╗   ███╗",
+        "██╔════╝██╔══██╗████╗ ████║",
+        "███████╗███████║██╔████╔██║",
+        "╚════██║██╔══██║██║╚██╔╝██║",
+        "███████║██║  ██║██║ ╚═╝ ██║",
+        "╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝",
+    ]
+
+    print(f"{CYAN}╔{'═' * width}╗{RESET}")
+
+    print(f"{CYAN}║{' ' * width}║{RESET}")
+
+    for line in lines:
+        print(
+            f"{CYAN}║{RESET}"
+            f"{BOLD}{WHITE}{line.center(width)}{RESET}"
+            f"{CYAN}║{RESET}"
+        )
+
+    print(f"{CYAN}║{' ' * width}║{RESET}")
+
+    print(
+        f"{CYAN}║{RESET}"
+        f"{BOLD}{WHITE}{'SAM QR'.center(width)}{RESET}"
+        f"{CYAN}║{RESET}"
+    )
+
+    print(
+        f"{CYAN}║{RESET}"
+        f"{WHITE}{'QR CODE GENERATOR'.center(width)}{RESET}"
+        f"{CYAN}║{RESET}"
+    )
+
+    print(f"{CYAN}║{' ' * width}║{RESET}")
+
+    print(f"{CYAN}╚{'═' * width}╝{RESET}")
 
 # ---------------
 # Menu
@@ -67,18 +93,26 @@ def show_header():
 
 
 def show_menu():
-    print(f"""
-{WHITE}{BOLD}┌──────────────────────────────────────────────────────────────┐
-│                          MAIN MENU                           │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│   {CYAN}[1]{WHITE}  Generate QR Code                                      │
-│   {CYAN}[2]{WHITE}  Generate & Save QR Code                               │
-│   {CYAN}[3]{WHITE}  About                                                 │
-│   {CYAN}[4]{WHITE}  Exit                                                  │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘{RESET}
-""")
+    menu = [
+        "[1]  Generate QR Code",
+        "[2]  Generate & Save QR Code",
+        "[3]  About",
+        "[4]  Exit"
+    ]
+
+    width = 60
+
+    print(f"\n{WHITE}{BOLD}")
+    print("┌" + "─" * width + "┐")
+    print("│" + "MAIN MENU".center(width) + "│")
+    print("├" + "─" * width + "┤")
+
+    for item in menu:
+        print("│   " + item.ljust(width - 3) + "│")
+
+    print("└" + "─" * width + "┘")
+    print(RESET)
+
 
 # ---------------
 # Generate QR
