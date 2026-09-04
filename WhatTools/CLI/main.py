@@ -1,4 +1,5 @@
 import pyautogui as pag
+import pywhatkit
 import time
 
 class pyAuto:
@@ -16,5 +17,13 @@ class pyAuto:
             return 1
         except Exception as e:
             return e
+
+    def sendMessagewithNumber(self,number,message):
+        try:
+            pywhatkit.sendwhatmsg_instantly(number,message)
+            return 1
+        except Exception as e:
+            return e
+
 
     

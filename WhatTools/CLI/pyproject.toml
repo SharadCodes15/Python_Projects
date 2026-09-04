@@ -6,4 +6,5 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "pyautogui>=0.9.54",
+    "pywhatkit>=5.4",
 ]
